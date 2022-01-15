@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChannelList, useChatContext } from 'stream-chat-react';
 import Cookies from 'universal-cookie';
 
-import { ChannelSearch, TeamChannelList, TeamChannelPreview } from './';
 import HospitalIcon from '../assets/hospital.png'
 import LogoutIcon from '../assets/logout.png'
 
@@ -28,18 +27,15 @@ const CompanyHeader = () => (
     </div>
 )
 
-import React from 'react'
+
 
 function ChannelListContainer() {
     return (
         <>
-            
+           ChannelListContainer 
         </>
     )
 }
 
 export default ChannelListContainer
 
-
-
-export default ChannelListContainer;
