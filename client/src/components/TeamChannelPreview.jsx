@@ -1,15 +1,15 @@
 import React from 'react';
 import { Avatar, useChatContext } from 'stream-chat-react';
 
-const TeamChannelPreview = (channel, type) => {
- const { channel: activeChannel, client } = useChatContext();
+const TeamChannelPreview = ({ setActiveChannel, setIsCreating, setIsEditing, setToggleContainer, channel, type }) => {
+    const { channel: activeChannel, client } = useChatContext();
 
-    //the question marks to make sure we're on the exact channel
     const ChannelPreview = () => (
         <p className="channel-preview__item">
             # {channel?.data?.name || channel?.data?.id}
         </p>
     );
+
 
     const DirectPreview = () => {
         const members = Object.values(channel.state.members).filter(({ user }) => user.id !== client.userID);
@@ -35,7 +35,12 @@ const TeamChannelPreview = (channel, type) => {
                 : 'channel-preview__wrapper'
         }
         onClick={() => {
-            console.log(channel)
+            setIsCreating(false);
+            setIsEditing(false);
+            setActiveChannel(channel);
+            if(setToggleContainer) {
+                setToggleContainer((prevState) => !prevState)
+            }
         }}
         >
             {type === 'team' ? <ChannelPreview /> : <DirectPreview />}

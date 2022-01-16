@@ -19,7 +19,7 @@ const ChannelContainer = ({ isCreating, setIsCreating, isEditing, setIsEditing, 
             </div> 
         )
     }
-    //happens when you create a chat and no messages yet
+
     const EmptyState = () => (
         <div className="channel-empty__container">
             <p className="channel-empty__first">This is the beginning of your chat history.</p>
