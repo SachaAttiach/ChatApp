@@ -53,6 +53,23 @@ function ChannelListContainer() {
                     )}
                     
                 />
+                <ChannelList 
+                    filters={filters}
+                    channelRenderFilterFn={customChannelMessagingFilter}
+                    List={(listProps) => (
+                        <TeamChannelList 
+                            {...listProps}
+                            type="messaging"
+                            
+                        />
+                    )}
+                    Preview={(previewProps) => (
+                        <TeamChannelPreview 
+                            {...previewProps}
+                            type="messaging"
+                        />
+                    )}
+                />
            </div>
         </>
     )
