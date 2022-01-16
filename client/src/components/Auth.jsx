@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import signinImage from '../assets/signup.jpg';
 
+//creating instance of cookies. 
 const cookies = new Cookies();
 
 const initialState = {
@@ -30,12 +31,12 @@ const Auth = () => {
         const { username, password, phoneNumber, avatarURL } = form;
 
         const URL = 'https://localhost:5000/auth';
-        // const URL = 'https://medical-pager.herokuapp.com/auth';
+       
 
         const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
             username, password, fullName: form.fullName, phoneNumber, avatarURL,
         });
-
+        //when getting data back from backend we're storing data in cookies
         cookies.set('token', token);
         cookies.set('username', username);
         cookies.set('fullName', fullName);
@@ -46,7 +47,7 @@ const Auth = () => {
             cookies.set('avatarURL', avatarURL);
             cookies.set('hashedPassword', hashedPassword);
         }
-
+        
         window.location.reload();
     }
 

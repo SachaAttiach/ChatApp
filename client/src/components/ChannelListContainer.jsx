@@ -30,15 +30,28 @@ const CompanyHeader = () => (
 
 
 function ChannelListContainer() {
+     const logout = () => {
+        cookies.remove("token");
+        cookies.remove('userId');
+        cookies.remove('username');
+        cookies.remove('fullName');
+        cookies.remove('avatarURL');
+        cookies.remove('hashedPassword');
+        cookies.remove('phoneNumber');
+
+        window.location.reload();
+    }
+
+    const filters = { members: { $in: [client.userID] } };
     return (
         <>
-           <SideBar/>
+           <SideBar logout={logout}/>
            <div className="channel-list__list__wrapper">
                <CompanyHeader/>
                <ChannelSearch/>
                <ChannelList 
-                    filters={filters}
-                    channelRenderFilterFn={customChannelTeamFilter}
+                    // filters={filters}
+                    // channelRenderFilterFn={customChannelTeamFilter}
                     List={(listProps) => (
                         <TeamChannelList 
                             {...listProps}
@@ -54,8 +67,8 @@ function ChannelListContainer() {
                     
                 />
                 <ChannelList 
-                    filters={filters}
-                    channelRenderFilterFn={customChannelMessagingFilter}
+                    // filters={filters}
+                    // channelRenderFilterFn={customChannelMessagingFilter}
                     List={(listProps) => (
                         <TeamChannelList 
                             {...listProps}
