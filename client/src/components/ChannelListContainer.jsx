@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ChannelList, useChatContext } from 'stream-chat-react';
 import Cookies from 'universal-cookie';
 import { ChannelSearch } from '.';
-
+import { ChannelSearch, TeamChannelList, TeamChannelPreview } from './';
 import HospitalIcon from '../assets/hospital.png'
 import LogoutIcon from '../assets/logout.png'
 
@@ -37,6 +37,17 @@ function ChannelListContainer() {
            <div className="channel-list__list__wrapper">
                <CompanyHeader/>
                <ChannelSearch/>
+               <ChannelList 
+                    filters={filters}
+                    channelRenderFilterFn={customChannelTeamFilter}
+                    List={(listProps) => (
+                        <TeamChannelList 
+                            {...listProps}
+                            
+                        />
+                    )}
+                    
+                />
            </div>
         </>
     )
